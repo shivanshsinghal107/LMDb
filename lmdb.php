@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
   <style>
+    .unstyled-button {
+      border: none;
+      padding: 0;
+      background: none;
+      }
 
       .carousel-inner .carousel-item-right.active,
       .carousel-inner .carousel-item-next {
@@ -36,12 +41,9 @@
 </head>
 <body style="background-color:black;color:white">
   <h1 align="center">Welcome to LMDb!</h1>
-  <h1 align="center">WATCH . TRACK . REPEAT</h1>
+  <h1 align="center">WATCH . TRACK . REPEAT</h1><br>
 
-  <!--nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="desktop-navbar">
-    <a class="navbar-brand" href="/">
-      <img src="https://i.ibb.co/GFbrDM6/1596273798134.png" border="0" width="30" height="30" class="d-inline-block align-top">
-    </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="desktop-navbar">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -63,7 +65,8 @@
         </li>
       </ul>
     </div>
-  </nav-->
+  </nav>
+  <br>
   <form action="" method="post">
     <input type="text" name="search" class="form-control" id="search" placeholder="Search">
     <br>
@@ -94,9 +97,11 @@
                 $active = ' active';
               else
                 $active = '';
-              echo "<div class='carousel-item$active'>";
-              echo "<a href='#'><img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'></a>";
-              echo "</div>";
+                echo "<div class='carousel-item$active'>";
+                echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
+                echo "<button type='submit' class='unstyled-button'><a href='#'>";
+                echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+                echo "</a></button></form></div>";
             }
           ?>
         </div>
@@ -130,10 +135,10 @@
               else
                 $active = '';
               echo "<div class='carousel-item$active'>";
-              echo "<form name='series' action='series.php'><input type='hidden' name='id' value=$id>";
-              echo "<a href='#' onclick='document.forms[0].submit();'>";
+              echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
+              echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
-              echo "</a></form></div>";
+              echo "</a></button></form></div>";
             }
           ?>
         </div>
