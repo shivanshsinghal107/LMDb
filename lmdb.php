@@ -74,9 +74,9 @@
   </form>
   <br>
   <div class="container text-center my-3">
-    <h2>Top Rated Movies</h2><br>
+    <h2>Trending Web Series & TV Shows</h2><br>
     <div class="row mx-auto my-auto">
-      <div id="mtoprated" class="carousel slide w-100" data-ride="carousel">
+      <div id="strending" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
             $host = 'localhost';
@@ -86,22 +86,102 @@
 
             // connect to the database
             $connection = mysqli_connect($host, $user, $password, $db_name);
-            $query = "SELECT * FROM `movies`";
+            $query = "SELECT * FROM `series` WHERE type = 'trending'";
             $res = mysqli_query($connection, $query);
 
-            for($i = 0; $i < mysqli_num_rows($res) && $i < 10; $i++){
+            for($i = 0; $i < mysqli_num_rows($res); $i++){
               $row = mysqli_fetch_assoc($res);
-              $id = $row['mid'];
-              $img_name = 'image'."$id".'.jpg';
+              $id = $row['id'];
+              $img_name = 'image'.$id.'.jpg';
+              if($id == 11)
+                $active = ' active';
+              else
+                $active = '';
+
+              echo "<div class='carousel-item$active'>";
+              echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
+              //echo "<input type='hidden' name='type' value='series/trending'>";
+              echo "<button type='submit' class='unstyled-button'><a href='#'>";
+              echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "</a></button></form></div>";
+            }
+          ?>
+        </div>
+        <a class="carousel-control-prev w-auto" href="#strending" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next w-auto" href="#strending" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container text-center my-3">
+    <h2>Trending Movies</h2><br>
+    <div class="row mx-auto my-auto">
+      <div id="mtrending" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <?php
+            $query = "SELECT * FROM `movies` WHERE type = 'trending'";
+            $res = mysqli_query($connection, $query);
+
+            for($i = 0; $i < mysqli_num_rows($res); $i++){
+              $row = mysqli_fetch_assoc($res);
+              $id = $row['id'];
+              $img_name = 'image'.$id.'.jpg';
+              if($id == 11)
+                $active = ' active';
+              else
+                $active = '';
+
+              echo "<div class='carousel-item$active'>";
+              echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
+              //echo "<input type='hidden' name='type' value='movies/trending'>";
+              echo "<button type='submit' class='unstyled-button'><a href='#'>";
+              echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "</a></button></form></div>";
+            }
+          ?>
+        </div>
+        <a class="carousel-control-prev w-auto" href="#mtrending" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next w-auto" href="#mtrending" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container text-center my-3">
+    <h2>Top Rated Movies</h2><br>
+    <div class="row mx-auto my-auto">
+      <div id="mtoprated" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <?php
+            $query = "SELECT * FROM `movies` WHERE type = 'top_rated'";
+            $res = mysqli_query($connection, $query);
+
+            for($i = 0; $i < mysqli_num_rows($res); $i++){
+              $row = mysqli_fetch_assoc($res);
+              $id = $row['id'];
+              $img_name = 'image'.$id.'.jpg';
               if($id == 1)
                 $active = ' active';
               else
                 $active = '';
-                echo "<div class='carousel-item$active'>";
-                echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
-                echo "<button type='submit' class='unstyled-button'><a href='#'>";
-                echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
-                echo "</a></button></form></div>";
+
+              echo "<div class='carousel-item$active'>";
+              echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
+              //echo "<input type='hidden' name='type' value='movies/top_rated'>";
+              echo "<button type='submit' class='unstyled-button'><a href='#'>";
+              echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "</a></button></form></div>";
             }
           ?>
         </div>
@@ -123,19 +203,21 @@
       <div id="stoprated" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $query = "SELECT * FROM `series`";
+            $query = "SELECT * FROM `series` WHERE type = 'top_rated'";
             $res = mysqli_query($connection, $query);
 
-            for($i = 0; $i < mysqli_num_rows($res) && $i < 10; $i++){
+            for($i = 0; $i < mysqli_num_rows($res); $i++){
               $row = mysqli_fetch_assoc($res);
-              $id = $row['sid'];
+              $id = $row['id'];
               $img_name = 'image'.$id.'.jpg';
               if($id == 1)
                 $active = ' active';
               else
                 $active = '';
+
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
+              //echo "<input type='hidden' name='type' value='series/top_rated'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
@@ -154,17 +236,68 @@
     </div>
   </div>
   <br>
+  <div class="container text-center my-3">
+    <h2>Animes</h2><br>
+    <div class="row mx-auto my-auto">
+      <div id="anime" class="carousel slide w-100" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+          <?php
+            $query = "SELECT * FROM `series` WHERE type = 'anime'";
+            $res = mysqli_query($connection, $query);
+
+            for($i = 0; $i < mysqli_num_rows($res); $i++){
+              $row = mysqli_fetch_assoc($res);
+              $id = $row['id'];
+              $img_name = 'image'.$id.'.jpg';
+              if($id == 21)
+                $active = ' active';
+              else
+                $active = '';
+
+              echo "<div class='carousel-item$active'>";
+              echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
+              //echo "<input type='hidden' name='type' value='anime'>";
+              echo "<button type='submit' class='unstyled-button'><a href='#'>";
+              echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "</a></button></form></div>";
+            }
+          ?>
+        </div>
+        <a class="carousel-control-prev w-auto" href="#anime" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next w-auto" href="#anime" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <br>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script>
+    $('#strending').carousel({
+      interval: 3000
+    });
+
+    $('#mtrending').carousel({
+      interval: 3000
+    });
+
     $('#mtoprated').carousel({
       interval: 3000
     });
 
     $('#stoprated').carousel({
+      interval: 3000
+    });
+
+    $('#anime').carousel({
       interval: 3000
     });
 
