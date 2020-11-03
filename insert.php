@@ -72,7 +72,7 @@ else{
       echo 'Check your details again<br>';
   }
   else
-    echo "<script>alert('Method not allowed'); window.location = window.history.back();</script>";;
+    echo "<script>window.location = 'http://localhost/lmdb/register.html';</script>";;
 }
 
 ?>

@@ -12,7 +12,7 @@ else{
   $sql = "SELECT * FROM users WHERE username = '$username'";
   $res = mysqli_query($conn, $sql);
   if(mysqli_num_rows($res) > 0){
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_assoc($res);
     $pass = $row['password'];
     $email = $row['email'];
   }
