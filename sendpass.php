@@ -1,59 +1,40 @@
 <html>
 <body>
+
 <?php
-$conn=mysqli_connect("localhost","root","","lmdb");
+
+$conn = mysqli_connect("localhost", "root", "", "lmdb");
 if(!$conn)
-{
-die("Connection Failed");
-}
-else
-{
-$umail=$pass='';
+  die("Connection Failed");
+else{
+  $username = $_GET['username'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-$umail=$_POST["umail"];
-}
+  $sql = "SELECT * FROM users WHERE username = '$username'";
+  $res = mysqli_query($conn, $sql);
+  if(mysqli_num_rows($res) > 0){
+    $row = mysqli_fetch_assoc($result);
+    $pass = $row['password'];
+    $email = $row['email'];
+  }
+  else
+    echo "<script>alert('Please register first'); window.location = 'http://localhost/lmdb/register.html';</script>";
 
-if (!filter_var($umail, FILTER_VALIDATE_EMAIL)) {
-$sql="select email,password from users where usermame='$umail'";
-if(mysqli_query($conn,$sql))
-{
-$result=mysqli_query($conn,$sql);
-$row=mysqli_fetch_assoc($result);
-$pass=$row['password'];
-$umail=$row['email'];
-}
-else
-{
-echo "Error" . mysqli_error($conn)."<br>";
-}
-}
-else
-{
-$sql="select password from uapp where email='$umail'";
-if(mysqli_query($conn,$sql))
-{
-$result=mysqli_query($conn,$sql);
-$row=mysqli_fetch_assoc($result);
-$pass=$row['password'];
-}
-else
-{
-echo "Error" . mysqli_error($conn)."<br>";
-}
+  $headers = "From: shivanshsinghal107@gmail.com" . "\r\n" ;
+  $subject = "Forgot Password";
+  $body = "Your current password is $pass";
+
+  ini_set("SMTP", "ssl://smtp.gmail.com");
+  ini_set("smtp_port", "465");
+
+  if(mail($email, $subject, $body, $headers))
+    echo "<script>alert('Check your mail for password'); window.location = 'http://localhost/lmdb/login.html';</script>";
+  else
+    echo "<script>alert('Error sending mail');</script>";
+
+  echo "<a href='register.html'>Go Back to Sign in page</a>";
 }
 
-$headers = "From: sv191000@gmail.com" . "\r\n" ;
-ini_set("SMTP", "ssl://smtp.gmail.com");
-ini_set("smtp_port", "465");
-$subject="Forgot Passwprd";
-$body="your current password is  ".$pass;
+?>
 
-if(mail($email, $subject, $body, $headers))
-echo "Mail sent successfully";
-else
-echo "Error in sending mail";
-
-echo "<a href='sigin.php'> Go Back to Signin page</a>";
-}
+</body>
+</html>
