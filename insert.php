@@ -60,6 +60,8 @@ else{
       $que = "INSERT INTO users(username, name, email, password) VALUES ('$username','$name','$email','$pass')";
       if(mysqli_query($conn, $que)){
         echo '<h4>Thank you for registering</h4>'."<br>";
+        setcookie('username', $username, time() + 7200, "/");
+        setcookie('password', $pass, time() + 7200, "/");
         if(mail($email, $subject, $body, $headers))
           echo "<script>alert('Check your mail'); window.location = 'http://localhost/lmdb/lmdb.php'</script>";
         else

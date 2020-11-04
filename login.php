@@ -23,8 +23,8 @@ else{
       echo "<script>alert('Please register first'); window.location = 'http://localhost/lmdb/register.html';</script>";
 
     if($pass == $cpass){
-      setcookie('username', $username, time() + (86400 * 30), "/");
-      setcookie('password', $pass, time() + (86400 * 30), "/");
+      setcookie('username', $username, time() + 7200, "/");
+      setcookie('password', $pass, time() + 7200, "/");
       $_SESSION['username'] = $username;
       $_SESSION['password'] = $pass;
       echo "<script>alert('Login Successful, Welcome Back $username'); window.location = 'http://localhost/lmdb/lmdb.php'</script>";

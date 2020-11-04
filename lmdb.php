@@ -99,7 +99,7 @@
 
             // connect to the database
             $connection = mysqli_connect('localhost', 'root', '', 'lmdb');
-            $query = "SELECT * FROM `series` WHERE type = 'trending'";
+            $query = "SELECT * FROM series WHERE type = 'trending'";
             $res = mysqli_query($connection, $query);
 
             for($i = 0; $i < mysqli_num_rows($res); $i++){
@@ -137,7 +137,7 @@
       <div id="mtrending" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $query = "SELECT * FROM `movies` WHERE type = 'trending'";
+            $query = "SELECT * FROM movies WHERE type = 'trending'";
             $res = mysqli_query($connection, $query);
 
             for($i = 0; $i < mysqli_num_rows($res); $i++){
@@ -175,7 +175,7 @@
       <div id="mtoprated" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $query = "SELECT * FROM `movies` WHERE type = 'top_rated'";
+            $query = "SELECT * FROM movies WHERE type = 'top_rated'";
             $res = mysqli_query($connection, $query);
 
             for($i = 0; $i < mysqli_num_rows($res); $i++){
@@ -213,7 +213,7 @@
       <div id="stoprated" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $query = "SELECT * FROM `series` WHERE type = 'top_rated'";
+            $query = "SELECT * FROM series WHERE type = 'top_rated'";
             $res = mysqli_query($connection, $query);
 
             for($i = 0; $i < mysqli_num_rows($res); $i++){
@@ -251,7 +251,7 @@
       <div id="anime" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $query = "SELECT * FROM `series` WHERE type = 'anime'";
+            $query = "SELECT * FROM series WHERE type = 'anime'";
             $res = mysqli_query($connection, $query);
 
             for($i = 0; $i < mysqli_num_rows($res); $i++){
