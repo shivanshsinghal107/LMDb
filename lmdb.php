@@ -42,18 +42,35 @@
 <body style="background-color:black;color:white">
   <h1 align="center">Welcome to LMDb!</h1>
   <h1 align="center">WATCH . TRACK . REPEAT</h1><br>
+  <?php
 
+    if(isset($_COOKIE['username'])){
+      //$logged_in = 1;
+      $page1 = "profile.php";
+      $name1 = "Profile";
+      $page2 = "logout.php";
+      $name2 = "Logout";
+    }
+    else{
+      //$logged_in = 0;
+      $page1 = "register.html";
+      $name1 = "Register";
+      $page2 = "login.html";
+      $name2 = "Login";
+    }
+
+  ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="desktop-navbar">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="lmdb.php">Home</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/register">Register</a>
+          <?php echo "<a class='nav-link' href='$page1'>$name1</a>"; ?>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/login">Login</a>
+          <?php echo "<a class='nav-link' href='$page2'>$name2</a>"; ?>
         </li>
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,13 +96,9 @@
       <div id="strending" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <?php
-            $host = 'localhost';
-            $user = 'root';
-            $password = '';
-            $db_name = 'lmdb';
 
             // connect to the database
-            $connection = mysqli_connect($host, $user, $password, $db_name);
+            $connection = mysqli_connect('localhost', 'root', '', 'lmdb');
             $query = "SELECT * FROM `series` WHERE type = 'trending'";
             $res = mysqli_query($connection, $query);
 
@@ -100,7 +113,6 @@
 
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
-              //echo "<input type='hidden' name='type' value='series/trending'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
@@ -139,7 +151,6 @@
 
               echo "<div class='carousel-item$active'>";
               echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
-              //echo "<input type='hidden' name='type' value='movies/trending'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
@@ -178,7 +189,6 @@
 
               echo "<div class='carousel-item$active'>";
               echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
-              //echo "<input type='hidden' name='type' value='movies/top_rated'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
@@ -217,7 +227,6 @@
 
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
-              //echo "<input type='hidden' name='type' value='series/top_rated'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
@@ -256,7 +265,6 @@
 
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
-              //echo "<input type='hidden' name='type' value='anime'>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
               echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
