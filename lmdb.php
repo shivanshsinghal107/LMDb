@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LMDb</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
   <style>
@@ -38,10 +41,9 @@
       }
 
   </style>
+  <title>LMDb</title>
 </head>
 <body style="background-color:black;color:white">
-  <h1 align="center">Welcome to LMDb!</h1>
-  <h1 align="center">WATCH . TRACK . REPEAT</h1><br>
   <?php
 
     if(isset($_COOKIE['username'])){
@@ -60,36 +62,42 @@
     }
 
   ?>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="desktop-navbar">
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="lmdb.php">Home</a>
-        </li>
-        <li class="nav-item active">
-          <?php echo "<a class='nav-link' href='$page1'>$name1</a>"; ?>
-        </li>
-        <li class="nav-item active">
-          <?php echo "<a class='nav-link' href='$page2'>$name2</a>"; ?>
-        </li>
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/about">About Us</a>
-          </div>
-        </li>
-      </ul>
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="lmdb.php"><strong>LMDb</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="lmdb.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <?php echo "<a class='nav-link' href='$page1'>$name1</a>"; ?>
+          </li>
+          <li class="nav-item">
+            <?php echo "<a class='nav-link' href='$page2'>$name2</a>"; ?>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/about">About Us</a>
+            </div>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
     </div>
   </nav>
-  <br>
-  <form action="" method="post">
-    <input type="text" name="search" class="form-control" id="search" placeholder="Search">
-    <br>
-    <button type="submit" class="btn btn-primary">Search</button>
-  </form>
-  <br>
+  <br><br><br>
+
   <div class="container text-center my-3">
     <h2>Trending Web Series & TV Shows</h2><br>
     <div class="row mx-auto my-auto">
@@ -114,7 +122,7 @@
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
-              echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "<img class='img-fluid' src='static/series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
             }
           ?>
@@ -152,7 +160,7 @@
               echo "<div class='carousel-item$active'>";
               echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
-              echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "<img class='img-fluid' src='static/movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
             }
           ?>
@@ -190,7 +198,7 @@
               echo "<div class='carousel-item$active'>";
               echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
-              echo "<img class='img-fluid' src='movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "<img class='img-fluid' src='static/movies/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
             }
           ?>
@@ -228,7 +236,7 @@
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
-              echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "<img class='img-fluid' src='static/series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
             }
           ?>
@@ -266,7 +274,7 @@
               echo "<div class='carousel-item$active'>";
               echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
               echo "<button type='submit' class='unstyled-button'><a href='#'>";
-              echo "<img class='img-fluid' src='series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
+              echo "<img class='img-fluid' src='static/series/$img_name' style='width:350px;height:400px;' alt='cover photo'>";
               echo "</a></button></form></div>";
             }
           ?>
@@ -283,9 +291,7 @@
     </div>
   </div>
   <br>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
   <script>
