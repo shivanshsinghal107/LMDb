@@ -15,23 +15,21 @@ else{
     $row = mysqli_fetch_assoc($res);
     $pass = $row['password'];
     $email = $row['email'];
+
+    $headers = "From: shivanshsinghal107@gmail.com" . "\r\n" ;
+    $subject = "Forgot Password";
+    $body = "Your current password is $pass";
+
+    ini_set("SMTP", "ssl://smtp.gmail.com");
+    ini_set("smtp_port", "465");
+
+    if(mail($email, $subject, $body, $headers))
+      echo "<script>alert('Check your mail for password'); window.location = 'http://localhost/lmdb/login.html';</script>";
+    else
+      echo "<script>alert('Error sending mail');</script>";
   }
   else
     echo "<script>alert('Please register first'); window.location = 'http://localhost/lmdb/register.html';</script>";
-
-  $headers = "From: shivanshsinghal107@gmail.com" . "\r\n" ;
-  $subject = "Forgot Password";
-  $body = "Your current password is $pass";
-
-  ini_set("SMTP", "ssl://smtp.gmail.com");
-  ini_set("smtp_port", "465");
-
-  if(mail($email, $subject, $body, $headers))
-    echo "<script>alert('Check your mail for password'); window.location = 'http://localhost/lmdb/login.html';</script>";
-  else
-    echo "<script>alert('Error sending mail');</script>";
-
-  echo "<a href='register.html'>Go Back to Sign in page</a>";
 }
 
 ?>

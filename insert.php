@@ -19,12 +19,12 @@ else{
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $flag = 0;
-      echo "Incorrect mail ID<br>";
+      echo "<script>alert('Incorrect mail ID'); window.location=window.history.back();</script>";
     }
 
     if($pass != $cpass){
       $flag = 0;
-      echo "Passwords doesn't match<br>";
+      echo "<script>alert('Passwords doesn't match'); window.location=window.history.back();</script>";
     }
 
     $uppercase = preg_match('@[A-Z]@', $pass);
@@ -33,19 +33,19 @@ else{
     $specialChars = preg_match('@[^\w]@', $pass);
 
     if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($pass) < 8) {
-        echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.<br>';
+        echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character'); window.location=window.history.back();</script>";
         $flag = 0;
     }
 
     if (!preg_match("/^[a-zA-Z-' ]*$/", $name)){
       $flag = 0;
-      echo "Check your name entry<br>";
+      echo "<script>alert('Check your name entry'); window.location=window.history.back();</script>";
     }
 
     $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) > 0){
-      echo "Username already taken, try using different username";
+      echo "<script>alert('Username already taken, try using different username'); window.location=window.history.back();</script>";
       $flag = 0;
     }
 
@@ -71,7 +71,7 @@ else{
         echo "Error updating record: " . mysqli_error($conn)."<br>";
     }
     else
-      echo 'Check your details again<br>';
+      echo "<script>alert('Check your details again'); window.location=window.history.back();</script>";
   }
   else
     echo "<script>window.location = 'http://localhost/lmdb/register.html';</script>";;

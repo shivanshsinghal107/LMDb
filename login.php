@@ -30,7 +30,7 @@ else{
       echo "<script>alert('Login Successful, Welcome Back $username'); window.location = 'http://localhost/lmdb/lmdb.php'</script>";
     }
     else
-      echo "Password entered is incorrect, Check your password and try again";
+      echo "<script>alert('Password entered is incorrect, Check your password and try again'); window.location=window.history.back();</script>";
   }
   else
     echo "<script>window.location = 'http://localhost/lmdb/login.html';</script>";
