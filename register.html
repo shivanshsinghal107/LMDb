@@ -1,13 +1,28 @@
-
 <html>
+<head>
+  <title>Register For LMDb</title>
+  <link rel="stylesheet" type="text/css" href="static/register.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" type="text/css">
+</head>
 <body>
-<form action="insert.php" method="post">
-  Name: <input type="text" name="name" required><br>
-  E-mail: <input type="text" name="email" required><br>
-  Username: <input type="text" name="username" required><br>
-  Password: <input type="password" name="pass" required><br>
-  Confirm Password: <input type="password" name="cpass" required><br>
-  <input type="submit">
-</form>
+  <div class="login-box">
+    <h1>Register Here</h1>
+      <form action="insert.php" method="post">
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter Name">
+        <p>Username</p>
+        <input type="text" name="username" placeholder="Enter Username">
+        <p>Email</p>
+        <input type="email" name="email" placeholder="Enter Email">
+        <p>Password</p>
+        <input type="password" name="pass" placeholder="Enter Password">
+        <p>Confirm Password</p>
+        <input type="password" name="cpass" placeholder="Enter Password">
+        <input type="submit" name="submit" value="Register">
+        <p class="reg">
+          <a class="link" href="login.html">Already have an account? Login</a>
+        </p>
+      </form>
+  </div>
 </body>
 </html>

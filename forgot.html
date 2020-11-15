@@ -1,8 +1,20 @@
 <html>
+<head>
+  <title>Forgot Password</title>
+  <link rel="stylesheet" type="text/css" href="static/forgot.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" type="text/css">
+</head>
 <body>
-<form action='sendpass.php'>
-  Username: <input type='text' name='username' required>
-  <input type="submit" >
-</form>
+  <div class="login-box">
+    <h1>Forgot Password</h1>
+      <form action="sendpass.php">
+        <p>Username</p>
+        <input type="text" name="username" placeholder="Enter Username">
+        <input type="submit" name="submit" value="Submit">
+        <p class="reg">
+          <a class="link" href="login.html">Back to Login</a>
+        </p>
+      </form>
+  </div>
 </body>
 </html>
