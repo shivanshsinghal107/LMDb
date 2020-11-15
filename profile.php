@@ -22,12 +22,12 @@ for($i = 0; $i < mysqli_num_rows($res); $i++){
   if($row['type'] == 'movies'){
     $id = $row['id'];
     $que = "SELECT * FROM movies WHERE id = '$id'";
-    $img = "movies/image".$id.".jpg";
+    $img = "static/movies/image".$id.".jpg";
   }
   else{
     $id = $row['id'];
     $que = "SELECT * FROM series WHERE id = '$id'";
-    $img = "series/image".$id.".jpg";
+    $img = "static/series/image".$id.".jpg";
   }
   $rating = $row['rating'];
   $review = $row['review'];

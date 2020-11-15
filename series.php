@@ -2,7 +2,7 @@
 
 $id = $_GET['id'];
 $image = 'image'.$id.'.jpg';
-$path = "series/$image";
+$path = "static/series/$image";
 
 $flag = 0;
 
