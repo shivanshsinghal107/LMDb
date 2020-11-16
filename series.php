@@ -6,11 +6,24 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+  <link href="static/index.css" rel="stylesheet">
 
   <style>
     h2{
       text-align: center;
       padding: 20px;
+    }
+
+    img{
+      margin-left: 130px;
+    }
+
+    #myTab, #myTabContent{
+      margin-left: -130px;
+    }
+
+    #myTab a{
+      color: #fff;
     }
   </style>
 
@@ -114,16 +127,28 @@
     echo "<h2>$name (Rank: $id)</h2>";
     echo "<div class='container'><div class='row'>";
     echo "<div class='col-6'>";
-    echo "<img src='$path' style='width:500px; height:750px;' alt='cover photo'>";
+    echo "<img src='$path' style='width:360px;height:100%;' alt='cover photo'>";
     echo "</div><div class='col-6'>";
-    echo "<div class='row'>";
-    echo "Genres: $genre<br>";
+    echo "<ul class='nav nav-tabs' id='myTab' role='tablist'>";
+    echo "<li class='nav-item' role='presentation'>";
+    echo "<a class='nav-link active' id='home-tab' data-toggle='tab' href='#home' role='tab' aria-controls='home' aria-selected='true'>Details</a>";
+    echo "</li>";
+    echo "<li class='nav-item' role='presentation'>";
+    echo "<a class='nav-link' id='profile-tab' data-toggle='tab' href='#profile' role='tab' aria-controls='profile' aria-selected='false'>Cast n Plot</a>";
+    echo "</li>";
+    echo "<li class='nav-item' role='presentation'>";
+    echo "<a class='nav-link' id='contact-tab' data-toggle='tab' href='#contact' role='tab' aria-controls='contact' aria-selected='false'>Rating & Review</a>";
+    echo "</li>";
+    echo "</ul>";
+    echo "<div class='tab-content' id='myTabContent'>";
+    echo "<div class='tab-pane fade show active' id='home' role='tabpanel' aria-labelledby='home-tab'>";
+    echo "<br>Genres: $genre<br>";
     echo "Rating: $rating<br>";
     echo "Release: $year<br>";
     echo "Seasons: $seasons<br>";
     echo "Episodes: $episodes<br>";
     echo "Avg. Duration: $duration minutes</div><br>";
-    echo "<div class='row'>";
+    echo "<div class='tab-pane fade' id='profile' role='tabpanel' aria-labelledby='profile-tab'>";
     echo "Cast:<br>";
     for($i = 0; $i < count($actors); $i++){
       $actor = explode(" /", $actors[$i]);
@@ -132,8 +157,9 @@
         echo ")";
       echo "<br>";
     }
-    echo "</div><br><div class='row'>";
-    echo "Plot:<br>$plot</div><br>";
+    echo "<br>";
+    echo "Plot:<br>$plot</div>";
+    echo "<div class='tab-pane fade' id='contact' role='tabpanel' aria-labelledby='contact-tab'>";
 
     if($flag == 1)
       $id += 10;
@@ -141,7 +167,6 @@
       $id += 20;
 
     if(isset($_COOKIE['username'])){
-      echo "<div class='row'>";
       echo "<form action='sreview.php' method='POST'>";
       echo "<div class='mb-3'>";
       echo "<label for='rating' class='form-label'>Rating</label>";
@@ -150,8 +175,9 @@
       echo "<label for='review' class='form-label'>Review</label>";
       echo "<textarea class='form-control' name='review' rows='3'></textarea></div>";
       echo "<input type='hidden' name='id' value='$id'>";
-      echo "<button type='submit' class='btn btn-primary'>Submit</button></form></div>";
+      echo "<button type='submit' class='btn btn-primary'>Submit</button></form>";
     }
+    echo "</div></div>";
     echo "</div></div></div><br>";
   }
   else
