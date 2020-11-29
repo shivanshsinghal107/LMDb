@@ -25,14 +25,6 @@
     #myTab a{
       color: #fff;
     }
-
-    .nav-link{
-      color: #000;
-    }
-
-    .fa-star:hover{
-      color: yellow;
-    }
   </style>
 
   <title>LMDb</title>
@@ -135,19 +127,19 @@
     echo "</div><div class='col-6'>";
     echo "<ul class='nav nav-tabs' id='myTab' role='tablist'>";
     echo "<li class='nav-item' role='presentation'>";
-    echo "<a class='nav-link active' id='home-tab' data-toggle='tab' href='#home' role='tab' aria-controls='home' aria-selected='true'>Details</a>";
+    echo "<a class='nav-link text-primary active' id='home-tab' data-toggle='tab' href='#home' role='tab' aria-controls='home' aria-selected='true'>Details</a>";
     echo "</li>";
     echo "<li class='nav-item' role='presentation'>";
-    echo "<a class='nav-link' id='profile-tab' data-toggle='tab' href='#profile' role='tab' aria-controls='profile' aria-selected='false'>Cast n Plot</a>";
+    echo "<a class='nav-link text-primary' id='profile-tab' data-toggle='tab' href='#profile' role='tab' aria-controls='profile' aria-selected='false'>Cast n Plot</a>";
     echo "</li>";
     if(isset($_COOKIE['username'])){
       echo "<li class='nav-item' role='presentation'>";
-      echo "<a class='nav-link' id='contact-tab' data-toggle='tab' href='#contact' role='tab' aria-controls='contact' aria-selected='false'>Rating & Review</a>";
+      echo "<a class='nav-link text-primary' id='contact-tab' data-toggle='tab' href='#contact' role='tab' aria-controls='contact' aria-selected='false'>Rating & Review</a>";
       echo "</li>";
     }
     echo "</li>";
     echo "<li class='nav-item' role='presentation'>";
-    echo "<a class='nav-link' id='users-tab' data-toggle='tab' href='#users' role='tab' aria-controls='users' aria-selected='false'>User Ratings</a>";
+    echo "<a class='nav-link text-primary' id='users-tab' data-toggle='tab' href='#users' role='tab' aria-controls='users' aria-selected='false'>User Ratings</a>";
     echo "</li>";
     echo "</ul>";
     echo "<div class='tab-content' id='myTabContent'>";
@@ -186,10 +178,7 @@
       echo "<form action='mreview.php' method='POST'>";
       echo "<div class='mb-3'>";
       echo "<label for='rating' class='form-label'>Rating</label><br>";
-      for($i = 0; $i < 10; $i++)
-        echo "<i class='far fa-star fa-2x'></i>";
-      echo "</div>";
-      //echo "<input class='form-control' type='number' name='rating' min='1' max='10' value='$rating'></div>";
+      echo "<input class='form-control' type='number' name='rating' min='1' max='10' value='$rating'></div>";
       echo "<div class='mb-3'>";
       echo "<label for='review' class='form-label'>Review</label>";
       echo "<textarea class='form-control' name='review' rows='3'>$review</textarea></div>";
@@ -227,7 +216,6 @@
   ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/8ec4625c00.js" crossorigin="anonymous"></script>
 
 </body>
 </html>
