@@ -75,7 +75,7 @@
       echo "<div class='card-body'>";
       echo "<h5 class='card-title'>$name ($rating)</h5>";
       //echo "<p class='card-text'>$rating</p>";
-      echo "<form action='movies.php'><input type='hidden' name='id' value=$id>";
+      echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
       echo "<button type='submit' class='btn btn-primary'>Visit</button></form>";
       echo "</div></div></div>";
     }
