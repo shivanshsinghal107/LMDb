@@ -49,7 +49,7 @@
 
   ?>
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#C3F4F7;">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#7FFFD4;">
     <div class="container-fluid">
       <a class="navbar-brand" href="lmdb.php"><strong>LMDb</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,14 +65,6 @@
           </li>
           <li class="nav-item">
             <?php echo "<a class='nav-link active' href='$page2'>$name2</a>"; ?>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/about">About Us</a>
-            </div>
           </li>
         </ul>
         <form class="d-flex" action="search.php">
