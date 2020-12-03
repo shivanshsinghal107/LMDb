@@ -47,7 +47,7 @@
 
   ?>
 
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#C3F4F7;">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#7FFFD4;">
     <div class="container-fluid">
       <a class="navbar-brand" href="lmdb.php"><strong>LMDb</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,14 +63,6 @@
           </li>
           <li class="nav-item">
             <?php echo "<a class='nav-link active' href='$page2'>$name2</a>"; ?>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              More
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/about">About Us</a>
-            </div>
           </li>
         </ul>
         <form class="d-flex" action="search.php">
@@ -259,39 +251,39 @@
     </a>
   </div>
   <br><br>
-  <h2>Animes</h2><br>
+  <!--h2>Animes</h2><br>
   <div id="anime" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <?php
 
         // connect to the database
-        $connection = mysqli_connect('localhost', 'root', '', 'lmdb');
-        $query = "SELECT * FROM series WHERE type = 'anime'";
-        $res = mysqli_query($connection, $query);
+        //$connection = mysqli_connect('localhost', 'root', '', 'lmdb');
+        //$query = "SELECT * FROM series WHERE type = 'anime'";
+        //$res = mysqli_query($connection, $query);
 
-        for($i = 0; $i < 8; $i++){
-          $row = mysqli_fetch_assoc($res);
-          $id = $row['id'];
-          $img_name = 'image'.$id.'.jpg';
+        //for($i = 0; $i < 8; $i++){
+        //  $row = mysqli_fetch_assoc($res);
+        //  $id = $row['id'];
+        //  $img_name = 'image'.$id.'.jpg';
 
-          if($id == 21){
-            echo "<div class='carousel-item active'>";
-            echo "<div class='container'>";
-            echo "<div class='row'>";
-          }
-          else if($id == 25){
-            echo "</div></div></div>";
-            echo "<div class='carousel-item'>";
-            echo "<div class='container'>";
-            echo "<div class='row'>";
-          }
-          echo "<div class='col-sm'>";
-          echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
-          echo "<button type='submit' class='unstyled-button'><a href='#'>";
-          echo "<img class='d-block w-100' src='static/series/$img_name' alt='cover photo'>";
-          echo "</a></button></form></div>";
-        }
-        echo "</div></div></div>";
+        //  if($id == 21){
+        //    echo "<div class='carousel-item active'>";
+        //    echo "<div class='container'>";
+        //    echo "<div class='row'>";
+        //  }
+        //  else if($id == 25){
+        //    echo "</div></div></div>";
+        //    echo "<div class='carousel-item'>";
+        //    echo "<div class='container'>";
+        //    echo "<div class='row'>";
+        //  }
+        //  echo "<div class='col-sm'>";
+        //  echo "<form action='series.php'><input type='hidden' name='id' value=$id>";
+        //  echo "<button type='submit' class='unstyled-button'><a href='#'>";
+        //  echo "<img class='d-block w-100' src='static/series/$img_name' alt='cover photo'>";
+        //  echo "</a></button></form></div>";
+        //}
+        //echo "</div></div></div>";
       ?>
     </div>
     <a class="carousel-control-prev w-auto" href="#anime" role="button" data-slide="prev">
@@ -301,7 +293,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
   </div>
-  <br>
+  <br-->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
 
