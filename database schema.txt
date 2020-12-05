@@ -1,0 +1,51 @@
+users
+- id int auto
+- username var 16
+- name var 30
+- email var 30
+- password var 16
+- role var 10 default-user
+
+movies
+- id int auto
+- name var 83
+- genre var 62
+- rating decimal(2, 1)
+- year var 9
+- duration int(3)
+- plot text
+- cast text
+- budget var 24
+- worldwide_gross var 27
+- type var 9
+
+series
+- id int auto
+- name var 34
+- genre var 52
+- rating decimal(2, 1)
+- year var 12
+- duration var 3
+- seasons int(2)
+- episodes int(3)
+- plot text
+- cast text
+- type var 9
+
+mreviews
+- mrid int auto
+- mid foriegn key with movies
+- username var 16 foreign key with users
+- rating int(2)
+- review text
+- time timestamp
+- type movies
+
+sreviews
+- srid int auto
+- sid foriegn key with series
+- username var 16 foreign key with users
+- rating int(2)
+- review text
+- time timestamp
+- type series
