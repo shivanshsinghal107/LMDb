@@ -1,4 +1,5 @@
 ## LMDb (Local Movie Database 🎞🍿)
+A PHP web app built using ***PHPMyAdmin, SQL, HTML & CSS*** having **IMDb features**.
 
 ### Home
 ![home](static/media/home.jpg)
